@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="PingSpace is a responsive real-time chat application demo."
+    />
+    <title>PingSpace · Real-time chat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app-shell" aria-label="PingSpace chat application">
+      <aside class="sidebar" id="sidebar">
+        <div class="brand-row">
+          <a class="brand" href="#" aria-label="PingSpace home">
+            <span class="brand-mark" aria-hidden="true">P</span>
+            <span>ping<span>space</span></span>
+          </a>
+          <button class="icon-button mobile-close" id="close-sidebar" aria-label="Close chats">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+
+        <div class="profile-card">
+          <div class="avatar avatar-me">VM</div>
+          <div>
+            <p class="profile-name">Vimala Manohar</p>
+            <p class="profile-status"><i></i> Available</p>
+          </div>
+          <button class="more-button" aria-label="Profile options">•••</button>
+        </div>
+
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+          <input id="chat-search" type="search" placeholder="Search messages" aria-label="Search chats" />
+          <kbd>⌘ K</kbd>
+        </div>
+
+        <div class="section-heading">
+          <span>Messages</span>
+          <button class="new-chat" id="new-chat" aria-label="Start a new chat">+</button>
+        </div>
+
+        <nav class="chat-list" id="chat-list" aria-label="Conversations">
+          <button class="chat-preview active" data-name="Maya Chen" data-status="Online" data-initials="MC" data-color="coral">
+            <span class="avatar avatar-maya">MC<span class="presence"></span></span>
+            <span class="preview-copy"><strong>Maya Chen</strong><small>Absolutely! I’ll send it over.</small></span>
+            <span class="preview-meta"><time>10:42</time><b>2</b></span>
+          </button>
+          <button class="chat-preview" data-name="Design Crew" data-status="5 members" data-initials="DC" data-color="violet">
+            <span class="avatar avatar-design">DC</span>
+            <span class="preview-copy"><strong>Design Crew</strong><small>Jordan: Those colors are great</small></span>
+            <span class="preview-meta"><time>09:36</time></span>
+          </button>
+          <button class="chat-preview" data-name="Owen Williams" data-status="Away" data-initials="OW" data-color="blue">
+            <span class="avatar avatar-owen">OW<span class="presence away"></span></span>
+            <span class="preview-copy"><strong>Owen Williams</strong><small>See you tomorrow! 👋</small></span>
+            <span class="preview-meta"><time>Yesterday</time></span>
+          </button>
+          <button class="chat-preview" data-name="Project Aurora" data-status="8 members" data-initials="PA" data-color="amber">
+            <span class="avatar avatar-project">PA</span>
+            <span class="preview-copy"><strong>Project Aurora</strong><small>You: Pushed the new update</small></span>
+            <span class="preview-meta"><time>Yesterday</time></span>
+          </button>
+          <button class="chat-preview" data-name="Nora Wilson" data-status="Offline" data-initials="NW" data-color="pink">
+            <span class="avatar avatar-nora">NW</span>
+            <span class="preview-copy"><strong>Nora Wilson</strong><small>That made my day, thank you!</small></span>
+            <span class="preview-meta"><time>Mon</time></span>
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button class="footer-link" id="theme-toggle" aria-label="Toggle dark mode">
+            <span class="footer-icon">☼</span> Appearance
+          </button>
+          <button class="footer-link" aria-label="Open settings">
+            <span class="footer-icon">⚙</span> Settings
+          </button>
+        </div>
+      </aside>
+
+      <section class="conversation" aria-label="Current conversation">
+        <header class="conversation-header">
+          <div class="header-left">
+            <button class="icon-button mobile-menu" id="open-sidebar" aria-label="Open chats">
+              <span class="hamburger" aria-hidden="true"></span>
+            </button>
+            <div class="avatar avatar-maya header-avatar">MC<span class="presence"></span></div>
+            <div>
+              <h1 id="chat-title">Maya Chen</h1>
+              <p id="chat-status"><i></i> Online</p>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="icon-button" aria-label="Start video call" title="Video call">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 10.5 20 7v10l-5-3.5v2A2.5 2.5 0 0 1 12.5 18h-7A2.5 2.5 0 0 1 3 15.5v-7A2.5 2.5 0 0 1 5.5 6h7A2.5 2.5 0 0 1 15 8.5v2Z"/></svg>
+            </button>
+            <button class="icon-button" aria-label="Start audio call" title="Audio call">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h3l2 5-2 1.5a14.3 14.3 0 0 0 5.5 5.5L15 14l5 2v3c0 1.1-.9 2-2 2C10.3 21 3 13.7 3 6c0-1.1.9-2 2-2Z"/></svg>
+            </button>
+            <button class="icon-button" aria-label="Conversation information" title="Conversation info">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8v.01"/></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="messages" id="messages" aria-live="polite">
+          <div class="date-label"><span>Today</span></div>
+
+          <article class="message incoming">
+            <div class="avatar avatar-maya message-avatar">MC</div>
+            <div class="bubble-wrap">
+              <div class="bubble">Good morning! How’s the new chat experience coming along?</div>
+              <time>10:31 AM</time>
+            </div>
+          </article>
+
+          <article class="message outgoing">
+            <div class="bubble-wrap">
+              <div class="bubble">Morning Maya! It’s coming together nicely. I’m polishing the interaction details now. ✨</div>
+              <time>10:33 AM <span class="read-receipt">✓✓</span></time>
+            </div>
+          </article>
+
+          <article class="message incoming">
+            <div class="avatar avatar-maya message-avatar">MC</div>
+            <div class="bubble-wrap">
+              <div class="bubble">That’s exciting! I love the direction you shared yesterday — it feels really warm and thoughtful.</div>
+              <time>10:36 AM</time>
+            </div>
+          </article>
+
+          <article class="message outgoing">
+            <div class="bubble-wrap">
+              <div class="bubble">Thank you! I wanted it to feel more like a place you want to be, not just another tool.</div>
+              <time>10:38 AM <span class="read-receipt">✓✓</span></time>
+            </div>
+          </article>
+
+          <article class="message incoming">
+            <div class="avatar avatar-maya message-avatar">MC</div>
+            <div class="bubble-wrap">
+              <div class="bubble">Exactly. The small touches really make a difference. Do you have the latest screens ready to share?</div>
+              <time>10:40 AM</time>
+            </div>
+          </article>
+
+          <article class="message incoming last-incoming">
+            <div class="avatar avatar-maya message-avatar">MC</div>
+            <div class="bubble-wrap">
+              <div class="bubble">I’d love to take a look before our sync.</div>
+              <time>10:41 AM</time>
+            </div>
+          </article>
+
+          <article class="message outgoing">
+            <div class="bubble-wrap">
+              <div class="bubble">Absolutely! I’ll send it over in just a moment. I added a few notes so the flow is easy to follow.</div>
+              <time>10:42 AM <span class="read-receipt">✓✓</span></time>
+            </div>
+          </article>
+
+          <div class="typing-indicator" id="typing-indicator" hidden>
+            <div class="avatar avatar-maya">MC</div>
+            <span><b></b><b></b><b></b></span>
+            <small>Maya is typing</small>
+          </div>
+        </div>
+
+        <form class="composer" id="message-form">
+          <button class="composer-action" type="button" id="attach-file" aria-label="Attach a file" title="Attach a file">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20.5 11.5-8.9 8.9a5 5 0 0 1-7.1-7.1L14 3.8a3.5 3.5 0 0 1 5 5l-9.6 9.6a2 2 0 0 1-2.8-2.8l8.9-8.9"/></svg>
+          </button>
+          <label class="message-input-wrap">
+            <span class="sr-only">Message Maya</span>
+            <input id="message-input" autocomplete="off" placeholder="Message Maya..." maxlength="600" />
+            <button class="emoji-button" type="button" id="emoji-button" aria-label="Add emoji">☺</button>
+          </label>
+          <button class="send-button" id="send-button" type="submit" aria-label="Send message">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 3-7.6 18-3.1-7.3L3 10.6 21 3Zm-10.7 10.7L15 9"/></svg>
+            <span>Send</span>
+          </button>
+          <div class="emoji-popover" id="emoji-popover" hidden aria-label="Emoji options">
+            <button type="button">✨</button><button type="button">👍</button><button type="button">❤️</button><button type="button">🎉</button><button type="button">😊</button><button type="button">👋</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
